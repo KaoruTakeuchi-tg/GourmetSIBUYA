@@ -48,9 +48,9 @@
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="#services">Services</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#accountregister">新規会員登録</a></li>
+						href="./CreateAccount">新規会員登録</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#accountregister">ログイン</a></li>
+						href="Login">ログイン</a></li>
 				</ul>
 			</div>
 		</div>
@@ -135,68 +135,6 @@
 			</div>
 		</div>
 	</section>
-	<!-- AccountRegister-->
-	<section id="accountregister">
-		<div class="container">
-			<h2 class="text-center" id="title">新規会員登録</h2>
-			<hr class="divider my-4" />
-			<div class="row">
-				<div class="col-md-5">
- 					<form role="form" method="post" action="/jp.topgate.gourmetshibuya.servlet/Login.java">
-						<fieldset>
-							<p class="text-uppercase pull-center"> サインアップ</p>
- 							<div class="form-group">
-								<input type="text" name="name" id="name" class="form-control input-lg" placeholder="ユーザ名">
-							</div>
-
-							<div class="form-group">
-								<input type="email" name="email_address" id="email_address" class="form-control input-lg" placeholder="メールアドレス">
-							</div>
-							<div class="form-group">
-								<input type="password" name="password" id="password" class="form-control input-lg" placeholder="パスワード">
-							</div>
-							<div class="form-group">
-								<input type="radio" name="gender" value="M" checked="checked">男性
-								<input type="radio" name="gender" value="F">女性
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-								  <input type="checkbox" class="form-check-input">
-								  By Clicking register you're agree to our policy & terms
-								</label>
-							  </div>
- 							<div>
- 									  <input type="submit" class="btn btn-lg btn-primary   value="会員登録">
- 							</div>
-						</fieldset>
-					</form>
-				</div>
-
-				<div class="col-md-2">
-					<!-------null------>
-				</div>
-
-				<div class="col-md-5">
- 				 		<form role="form">
-						<fieldset>
-							<p class="text-uppercase"> ログイン </p>
-
-							<div class="form-group">
-								<input type="email" name="mail_address" id="mail_address" class="form-control input-lg" placeholder="メールアドレス">
-							</div>
-							<div class="form-group">
-								<input type="password" name="password" id="password" class="form-control input-lg" placeholder="パスワード">
-							</div>
-							<div>
-								<input type="submit" class="btn btn-md" value="サインイン">
-							</div>
-
- 						</fieldset>
-				</form>
-				</div>
-			</div>
-		</div>
-	</section>>
 	<!-- Portfolio-->
 	<section id="portfolio">
 		<div class="container-fluid p-0">

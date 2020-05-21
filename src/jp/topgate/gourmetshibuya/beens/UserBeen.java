@@ -6,7 +6,7 @@ public class UserBeen {
 	private String password;
 	public UserBeen(String id, String password){};
 	
-	public String gerId() {
+	public String getId() {
 		return id;
 	}
 	
@@ -14,7 +14,7 @@ public class UserBeen {
 		this.id = id;
 	}
 	
-	public String gerPassword() {
+	public String getPassword() {
 		return password;
 	}
 	
