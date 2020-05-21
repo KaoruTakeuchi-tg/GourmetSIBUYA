@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class CreateAccount
  */
 @WebServlet("/CreateAccount")
-public class CreateAccount extends HttpServlet {
+public class CreateAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateAccount() {
+    public CreateAccountServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
