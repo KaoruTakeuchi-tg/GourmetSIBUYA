@@ -31,25 +31,39 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("id");
+		String id = request.getParameter("email_address");
 		String password = request.getParameter("password");
 
-		//ログイン処理
-		LoginDao logindao = new LoginDao();
+		UserBeen user = new UserBeen(id, password);
+		String nextUrl = null;
+		// ログイン処理
+		boolean isLogin = execute(user);
 
-		boolean isLogin = logindao.findUser(id, password);
-
-		//ログイン成功時の処理
+		// ログイン成功時の処理
 		if (isLogin) {
-			UserBeen userbeen = new UserBeen(id, password);
-			//ユーザ情報をセッションスコープに保存
+			// ユーザー情報をセッションスコープに保存
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", id);
+			nextUrl = "/index.jsp";
+		}else {
+			nextUrl = "/Login.jsp";
 		}
 
-		//トップページにフォワード
-		//RequestDispatchar dispatcher = request.getRequestDispatcher("");
-		//dispatcher.forward(request, response);
+		// トップページにフォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher(nextUrl);
+		dispatcher.forward(request, response);
 	}
+
+	boolean execute(UserBeen user) {
+			var loginDao = new LoginDao();
+			user = loginDao.findUser(user.getId());
+
+			if (user != null && user.getPassword().equals(user.getPassword())) {
+				return true;
+			}
+			return false;
+		}
+
+
 
 }
