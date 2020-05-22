@@ -12,33 +12,32 @@ public class RestaurantDao {
 
 	public RestaurantBean getRestaurantDetailInfo() {
 		RestaurantBean rb = new RestaurantBean();
-		try {
-			Connection con = null;
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:13306/main?serverTimezone=JST";
-			String user = "root";
-			String pass = "kaoru2106";
-			try {
-				con = DriverManager.getConnection(url, user, pass);
-				Statement stm = con.createStatement();
+		String servername = "13306";
+		String databasename = "main";
+		String user = "root";
+		String password = "0000";
+		String url = "jdbc:mysql://" + servername + "/" + databasename +"?serverTimezone=JST";
+
+		try (Connection con = DriverManager.getConnection(url, user, password)){
+			System.out.println("Connected....");
+			try (Statement st = con.createStatement()){
 				String sql = "SELECT * FROM main.restaurans_categories";
-				ResultSet rs = stm.executeQuery(sql);
-				rb.setBusiness_hours(rs.getString("business_hours"));
-				rb.setContent(rs.getString("content"));
-				rb.setEvaluation(rs.getInt("evaluation"));
-				rb.setGenres(rs.getString("genres"));
-				rb.setName(rs.getString("name"));
-				rb.setPhonenum(rs.getString("phonenum"));
-				rb.setPhoto(rs.getString("photo"));
-				rb.setPlace(rs.getString("place"));
-				rb.setRegular_holiday(rs.getString("regular_holiday"));
-				rb.setRestaurant_id(rs.getInt("restaurant_id"));
-				rb.setUrl(rs.getString("url"));
-			}catch (SQLException e) {
-				System.out.println("SQL");
+				try (ResultSet rs = st.executeQuery(sql)) {
+					rb.setBusiness_hours(rs.getString("business_hours"));
+					rb.setContent(rs.getString("content"));
+					rb.setEvaluation(rs.getInt("evaluation"));
+					rb.setGenres(rs.getString("genres"));
+					rb.setName(rs.getString("name"));
+					rb.setPhonenum(rs.getString("phonenum"));
+					rb.setPhoto(rs.getString("photo"));
+					rb.setPlace(rs.getString("place"));
+					rb.setRegular_holiday(rs.getString("regular_holiday"));
+					rb.setRestaurant_id(rs.getInt("restaurant_id"));
+					rb.setUrl(rs.getString("url"));
+				}
 			}
-		}catch (ClassNotFoundException e) {
-				e.printStackTrace();
+		}catch (SQLException e) {
+			System.out.println("SQL");
 		}
 		return rb;
 	}
