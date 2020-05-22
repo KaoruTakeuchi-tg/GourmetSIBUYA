@@ -34,14 +34,14 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("email_address");
 		String password = request.getParameter("password");
 
-		UserBean user = new UserBean(id, password);
+		UserBean user = new UserBean(id, password, null, null);
 		String nextUrl = null;
 		// ログイン処理
 		boolean isLogin = execute(user);
 
 		// ログイン成功時の処理
 		if (isLogin) {
-			UserBean userbeen = new UserBean(id, password);
+			UserBean userbeen = new UserBean(id, password, null, null);
 
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", id);

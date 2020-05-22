@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jp.topgate.gourmetshibuya.beans.UserBean;
+import jp.topgate.gourmetshibuya.dao.LoginDao;
+
 
 /**
  * Servlet implementation class CreateAccount
@@ -16,14 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/CreateAccount")
 public class CreateAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CreateAccountServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,8 +33,33 @@ public class CreateAccountServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		request.setCharacterEncoding("UTF-8");
+		String id = request.getParameter("email_address");
+		String password = request.getParameter("password");
+		String name = request.getParameter("name");
+		String gender = request.getParameter("gender");
+		String Message = null;
+		String returnUrl = null;
+
+		UserBean user = new UserBean(id, password, name, gender);
+
+		//reateAccountDao createAccountDao = new CreateAccountDao();
+		LoginDao loginDao = new LoginDao();
+		UserBean user2 = loginDao.findUser(user.getId());
+		//int isSuccess = createAccountDao.newUser(user);
+		if(user2.getPassword() == null) {
+			//登録の処理
+			returnUrl = "index.jsp";
+		}else {
+			Message = "すでにこのメールアドレスは登録されています";
+			returnUrl = "/CreateAccount.jsp";
+		}
+		request.setAttribute("Message", Message);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher(returnUrl);
+		dispatcher.forward(request, response);
+
 	}
 
 }

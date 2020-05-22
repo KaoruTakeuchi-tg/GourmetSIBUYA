@@ -50,11 +50,11 @@
                 <div class="card">
                     <div class="card-header">
                     <div class="card-body">
-                        <form action="/jp.topgate.gourmetshibuya/CreateAccount.java" method="POST">
+                        <form action="CreateAccount" method="POST">
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="email_address" class="form-control" name="email-address" required autofocus>
+                                    <input type="text" id="email_address" class="form-control" name="email_address" required autofocus>
                                 </div>
                             </div>
 
@@ -89,6 +89,7 @@
                 </div>
             </div>
         </div>
+        <%=request.getAttribute("Message") %>
     </div>
     </div>
 

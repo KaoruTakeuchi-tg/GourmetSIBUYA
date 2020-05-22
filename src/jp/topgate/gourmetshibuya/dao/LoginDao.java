@@ -32,7 +32,7 @@ public class LoginDao {
 				// 結果をArrayListに格納
 				while(rs.next()) {
 					String password = rs.getString("pass_word");
-					user = new UserBean(emailAddress, password);
+					user = new UserBean(emailAddress, password, null, null);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
