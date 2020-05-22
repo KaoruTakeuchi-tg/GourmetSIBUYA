@@ -46,9 +46,9 @@
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="#about">About</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#services">Services</a></li>
+						href=RestaurantServlet>Services</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="./CreateAccount">新規会員登録</a></li>
+						href="CreateAccount">新規会員登録</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="Login">ログイン</a></li>
 				</ul>
@@ -93,7 +93,7 @@
 					1.プレミアム会員限定の有名レストランご招待<br>
 					2.予約が取りにくいレストランも優先的に予約<br>
 					3.コンシェルジェがお客様のお店選びをサポート</p>
-					<a class="btn btn-light btn-xl js-scroll-trigger" href="#services">プレミアム会員になる</a>
+					<a class="btn btn-light btn-xl js-scroll-trigger" href="">プレミアム会員になる</a>
 				</div>
 			</div>
 		</div>

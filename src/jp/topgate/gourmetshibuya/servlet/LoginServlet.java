@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import jp.topgate.gourmetshibuya.beens.UserBeen;
+import jp.topgate.gourmetshibuya.beans.UserBean;
 import jp.topgate.gourmetshibuya.dao.LoginDao;
 
 /**
@@ -41,7 +41,12 @@ public class LoginServlet extends HttpServlet {
 
 		// ログイン成功時の処理
 		if (isLogin) {
+<<<<<<< HEAD
 			// ユーザー情報をセッションスコープに保存
+=======
+			UserBean userbeen = new UserBean(id, password);
+			//ユーザ情報をセッションスコープに保存
+>>>>>>> 2bbef7f... Restaurant.jsp servlet add
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", id);
 			nextUrl = "/index.jsp";
