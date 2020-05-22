@@ -14,10 +14,9 @@ public class LoginDao {
 	private final String DB_USER = "root";
 	private final String DB_PASS = "pass";
 
-<<<<<<< HEAD
-		public UserBeen findUser(String emailAddress) {
+		public UserBean findUser(String emailAddress) {
 			Connection conn = null;
-			UserBeen user = null;
+			UserBean user = null;
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS);
@@ -33,29 +32,7 @@ public class LoginDao {
 				// 結果をArrayListに格納
 				while(rs.next()) {
 					String password = rs.getString("pass_word");
-					user = new UserBeen(emailAddress, password);
-=======
-	public boolean findUser(String email_address, String password) {
-		Connection conn = null;
-		UserBean user = null;
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS);
-			//conn = DriverManager.getConnection(url,"root","JW!mgc99wrd");
-
-			// SELECTを実行
-			String sql = "SELECT PASSWORD FROM USER WHERE email_address='" + email_address + "'";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
-
-			// SELECT実行
-			ResultSet rs = pStmt.executeQuery();
-
-			// 結果をArrayListに格納
-			while(rs.next()) {
-				user = new UserBean(email_address, password);
-				if (user != null && user.getPassword().equals(password)) {
-					return true;
->>>>>>> 2bbef7f... Restaurant.jsp servlet add
+					user = new UserBean(emailAddress, password);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

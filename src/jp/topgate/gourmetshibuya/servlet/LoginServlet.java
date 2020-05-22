@@ -34,19 +34,15 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("email_address");
 		String password = request.getParameter("password");
 
-		UserBeen user = new UserBeen(id, password);
+		UserBean user = new UserBean(id, password);
 		String nextUrl = null;
 		// ログイン処理
 		boolean isLogin = execute(user);
 
 		// ログイン成功時の処理
 		if (isLogin) {
-<<<<<<< HEAD
-			// ユーザー情報をセッションスコープに保存
-=======
 			UserBean userbeen = new UserBean(id, password);
-			//ユーザ情報をセッションスコープに保存
->>>>>>> 2bbef7f... Restaurant.jsp servlet add
+
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", id);
 			nextUrl = "/index.jsp";
@@ -59,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	boolean execute(UserBeen user) {
+	boolean execute(UserBean user) {
 			var loginDao = new LoginDao();
 			user = loginDao.findUser(user.getId());
 
