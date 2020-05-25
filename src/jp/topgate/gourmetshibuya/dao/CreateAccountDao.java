@@ -3,7 +3,6 @@ package jp.topgate.gourmetshibuya.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import jp.topgate.gourmetshibuya.beans.UserBean;
@@ -15,30 +14,27 @@ public class CreateAccountDao {
 	private final String DB_USER = "root";
 	private final String DB_PASS = "pass";
 
-	public int newUser(UserBean newUser) {
+	public void newUser(UserBean newUser) {
 		Connection conn = null;
-		UserBean user = null;
-		int ret = 0;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS);
 
-			// SELECTを実行
-			String sql = "SELECT * FROM GourmetSHIBUYADB.user_categories WHERE email_address=?";
+			int id_num = 4;
+
+			// INSERTを実行
+			String sql = "INSERT INTO GourmetSHIBUYADB.user_categories"
+					+ " (email_address, pass_word, name, gender) values (?, ?, ?, ?);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, newUser.getId());
+			pStmt.setString(2, newUser.getPassword());
+			pStmt.setString(3, newUser.getName());
+			pStmt.setString(4, newUser.getGender());
 
 			// SELECT実行
-			ResultSet rs = pStmt.executeQuery();
+			int rs = pStmt.executeUpdate();
 			System.out.println(rs);
-
-			// 結果をArrayListに格納
-			if(rs.next()) {
-				//String Message = "すでにこのメールアドレスは登録されています";
-				//String returnUrl = "/CreateAccount.jsp";
-				ret += 1;
-			}
-
+			id_num = id_num + 1;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,8 +50,9 @@ public class CreateAccountDao {
 				}
 			}
 		}
-		return ret;
 	}
+
+
 
 
 }

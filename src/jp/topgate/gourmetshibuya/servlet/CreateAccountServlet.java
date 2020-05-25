@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jp.topgate.gourmetshibuya.beans.UserBean;
+import jp.topgate.gourmetshibuya.dao.CreateAccountDao;
 import jp.topgate.gourmetshibuya.dao.LoginDao;
 
 
@@ -48,8 +49,9 @@ public class CreateAccountServlet extends HttpServlet {
 		LoginDao loginDao = new LoginDao();
 		UserBean user2 = loginDao.findUser(user.getId());
 		//int isSuccess = createAccountDao.newUser(user);
-		if(user2.getPassword() == null) {
-			//登録の処理
+		if(user2 == null) {
+			CreateAccountDao createAccountDao = new CreateAccountDao();
+			createAccountDao.newUser(user);
 			returnUrl = "index.jsp";
 		}else {
 			Message = "すでにこのメールアドレスは登録されています";
