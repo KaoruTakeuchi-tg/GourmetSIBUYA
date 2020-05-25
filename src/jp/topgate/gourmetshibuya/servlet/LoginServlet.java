@@ -57,9 +57,9 @@ public class LoginServlet extends HttpServlet {
 
 	boolean execute(UserBean user) {
 			var loginDao = new LoginDao();
-			user = loginDao.findUser(user.getId());
+			UserBean user2 = loginDao.findUser(user.getId());
 
-			if (user != null && user.getPassword().equals(user.getPassword())) {
+			if (user2 != null && user2.getPassword().equals(user.getPassword())) {
 				return true;
 			}
 			return false;
