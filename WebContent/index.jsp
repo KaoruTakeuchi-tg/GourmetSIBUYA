@@ -144,16 +144,17 @@
 	<section id="portfolio">
 		<div class="container-fluid p-0">
 			<div class="row no-gutters">
-			<%List<RestaurantBean> reList = (List<RestaurantBean>)request.getAttribute("RestaurantInfo");
-			Iterator<RestaurantBean> iterator = reList.iterator();
-			RestaurantBean rb = new RestaurantBean();
-			while(iterator.hasNext()){
-			rb = iterator.next();%>
+			<%//RestaurantList rl = new RestaurantList();
+			RestaurantList rl = (RestaurantList)request.getAttribute("RestaurantInfo");
+			//List<RestaurantBean> reList = (List<RestaurantBean>)request.getAttribute("RestaurantInfo");
+			//RestaurantBean rb = new RestaurantBean();
+			for(RestaurantBean ri: rl.getResutaurantList()){
+				%>
 			<div class="col-lg-4 col-sm-6">
 					<a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg"><img
-						class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="" />
+						class="img-fluid" src="<%=ri.getPhoto() %>" alt="" />
 						<div class="portfolio-box-caption">
-						<div class="project-name"><%=rb.getName() %></div>
+						<div class="project-name"><%=ri.getName() %></div>
 						</div></a>
 				</div>
 			<%} %>

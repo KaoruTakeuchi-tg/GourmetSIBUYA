@@ -20,4 +20,10 @@ public class RestaurantList {
 	public void addResutaurantList(RestaurantBean rb) {
 		resutaurantList.add(rb);
 	}
+
+	public void setResutaurantList(List<RestaurantBean> resutaurantList) {
+		this.resutaurantList = resutaurantList;
+	}
+	
+	
 }

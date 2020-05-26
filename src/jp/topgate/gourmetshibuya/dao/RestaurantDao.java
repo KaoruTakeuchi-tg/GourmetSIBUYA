@@ -76,6 +76,7 @@ public class RestaurantDao {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS);
+			System.out.println("Secceful");
 			Statement st = con.createStatement();
 			String sql = "select photo,name from main.restaurans_categories order by evaluation DESC LIMIT 6";
 			ResultSet rs = st.executeQuery(sql);
