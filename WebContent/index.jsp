@@ -1,3 +1,8 @@
+<%@page import="jp.topgate.gourmetshibuya.beans.RestaurantBean"%>
+<%@page import="java.util.List"%>
+<%@page import="beanList.RestaurantList"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Iterator" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -139,16 +144,21 @@
 	<section id="portfolio">
 		<div class="container-fluid p-0">
 			<div class="row no-gutters">
-				<div class="col-lg-4 col-sm-6">
+			<%//RestaurantList rl = new RestaurantList();
+			RestaurantList rl = (RestaurantList)request.getAttribute("RestaurantInfo");
+			//List<RestaurantBean> reList = (List<RestaurantBean>)request.getAttribute("RestaurantInfo");
+			//RestaurantBean rb = new RestaurantBean();
+			for(RestaurantBean ri: rl.getResutaurantList()){
+				%>
+			<div class="col-lg-4 col-sm-6">
 					<a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg"><img
-						class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg"
-						alt="" />
+						class="img-fluid" src="<%=ri.getPhoto() %>" alt="" />
 						<div class="portfolio-box-caption">
-							<div class="project-category text-white-50">Category</div>
-							<div class="project-name">Project Name</div>
+						<div class="project-name"><%=ri.getName() %></div>
 						</div></a>
 				</div>
-				<div class="col-lg-4 col-sm-6">
+			<%} %>
+				<!-- <div class="col-lg-4 col-sm-6">
 					<a class="portfolio-box" href="assets/img/portfolio/fullsize/2.jpg"><img
 						class="img-fluid" src="assets/img/portfolio/thumbnails/2.jpg"
 						alt="" />
@@ -192,7 +202,7 @@
 							<div class="project-category text-white-50">Category</div>
 							<div class="project-name">Project Name</div>
 						</div></a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</section>
