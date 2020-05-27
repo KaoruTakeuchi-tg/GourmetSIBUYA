@@ -31,9 +31,10 @@ public class SearchServlet extends HttpServlet {
 		SearchDao sd = new SearchDao();
 		RestaurantList searchResult = new RestaurantList();
 		searchResult = sd.Search(text);
+		int indexNum = searchResult.getSize();
 		RequestDispatcher rd = request.getRequestDispatcher("Search.jsp");
 
-
+		request.setAttribute("indexNum", indexNum);
 		request.setAttribute("searchResult", searchResult);
 		rd.forward(request, response);
 	}

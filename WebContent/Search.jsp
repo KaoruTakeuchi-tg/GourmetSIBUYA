@@ -18,9 +18,10 @@
 
 <div class="container">
 
+	<%int indexNum = (int)request.getAttribute("indexNum");%>
     <hgroup class="mb20">
 		<h1>検索結果</h1>
-		<h2 class="lead"><strong class="text-danger">3</strong> results were found for the search for <strong class="text-danger">Gourmet SIBUYA</strong></h2>   <!--  要素数 -->>
+		<h2 class="lead"><strong class="text-danger"><%=indexNum%></strong> results were found for the search for <strong class="text-danger">Gourmet SIBUYA</strong></h2>   <!--  要素数 -->
 	</hgroup>
 
 	<%RestaurantList rl = (RestaurantList)request.getAttribute("searchResult");
@@ -30,7 +31,7 @@
     <section class="col-xs-12 col-sm-6 col-md-12">
 		<article class="search-result row">
 			<div class="col-xs-12 col-sm-12 col-md-3">
-				<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/10/people" alt="Lorem ipsum" /></a>            <!-- 画像 -->
+				<a href="#" title="Lorem ipsum" class="thumbnail"><img src="<%=ri.getPhoto()%>" alt="Lorem ipsum" /></a>            <!-- 画像 -->
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">
 				<h3><a href="#" title=""><%=ri.getName() %></a></h3>

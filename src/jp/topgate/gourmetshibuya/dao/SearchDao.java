@@ -24,9 +24,9 @@ public class SearchDao {
 			Connection con = DriverManager.getConnection(url, user, password);
 			System.out.println("Connected....");
 			try (Statement st = con.createStatement()){
-				String sql2 = "SELECT * FROM main.restaurans_categories WHERE CONCAT(name, place, phonenum, genres) LIKE \"%?%\";";
+				String sql2 = "SELECT * FROM main.restaurans_categories WHERE CONCAT(name, place, phonenum, genres) LIKE ?;";
 				PreparedStatement pStmt2 = con.prepareStatement(sql2);
-				pStmt2.setString(1, input);
+				pStmt2.setString(1, "%" + input + "%");
 				ResultSet rs = pStmt2.executeQuery();
 				while(rs.next()) {
 					RestaurantBean rb = new RestaurantBean();

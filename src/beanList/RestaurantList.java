@@ -25,5 +25,9 @@ public class RestaurantList {
 		this.resutaurantList = resutaurantList;
 	}
 
+	public int getSize() {
+		return resutaurantList.size();
+	}
+
 
 }
