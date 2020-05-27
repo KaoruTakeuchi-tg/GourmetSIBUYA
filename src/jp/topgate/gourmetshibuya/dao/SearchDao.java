@@ -15,23 +15,15 @@ public class SearchDao {
 
 	public RestaurantList Search(String text) {
 		RestaurantBean rb = new RestaurantBean();
-		String servername = "13306";
-		String databasename = "main";
+		String url = "jdbc:mysql://127.0.0.1:13306/main?serverTimezone=UTC";
 		String user = "root";
-		String password = "0000";
-		String url = "jdbc:mysql://" + servername + "/" + databasename +"?serverTimezone=JST";
-		String input = text;
+		String password = "kaoru2106";
 		int count;
 		RestaurantList searchResult = new RestaurantList();
-		try (Connection con = DriverManager.getConnection(url, user, password)){
+		try {
+			Connection con = DriverManager.getConnection(url, user, password);
 			System.out.println("Connected....");
 			try (Statement st = con.createStatement()){
-				String sql1 = "SELECT COUNT(*)FROM main.restaurans_categories WHERE CONCAT(name, place, phonenum, genres) LIKE \"%%%\";";
-				PreparedStatement pStmt1 = con.prepareStatement(sql1);
-				pStmt1.setString(2,text);
-				try (ResultSet rs1 = pStmt1.executeQuery()){
-					count = rs1.getInt("COUNT(*)");
-				}
 				String sql2 = "SELECT * FROM main.restaurans_categories WHERE CONCAT(name, place, phonenum, genres) LIKE \"%%%\";";
 				PreparedStatement pStmt2 = con.prepareStatement(sql2);
 				pStmt2.setString(2, text);
