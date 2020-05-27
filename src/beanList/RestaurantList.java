@@ -24,6 +24,6 @@ public class RestaurantList {
 	public void setResutaurantList(List<RestaurantBean> resutaurantList) {
 		this.resutaurantList = resutaurantList;
 	}
-	
-	
+
+
 }

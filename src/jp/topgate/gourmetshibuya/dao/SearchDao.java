@@ -6,15 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
+import beanList.RestaurantList;
 import jp.topgate.gourmetshibuya.beans.RestaurantBean;
 
 public class SearchDao {
 
 
-	public List<RestaurantBean> Search(String text) {
+	public RestaurantList Search(String text) {
 		RestaurantBean rb = new RestaurantBean();
 		String servername = "13306";
 		String databasename = "main";
@@ -23,7 +22,7 @@ public class SearchDao {
 		String url = "jdbc:mysql://" + servername + "/" + databasename +"?serverTimezone=JST";
 		String input = text;
 		int count;
-		List<RestaurantBean> searchResult = new ArrayList<RestaurantBean>();
+		RestaurantList searchResult = new RestaurantList();
 		try (Connection con = DriverManager.getConnection(url, user, password)){
 			System.out.println("Connected....");
 			try (Statement st = con.createStatement()){
@@ -49,7 +48,7 @@ public class SearchDao {
 						rb.setRegular_holiday(rs.getString("regular_holiday"));
 						rb.setRestaurant_id(rs.getInt("restaurant_id"));
 						rb.setUrl(rs.getString("url"));
-						searchResult.add(rb);
+						searchResult.addResutaurantList(rb);
 					}
 
 				}

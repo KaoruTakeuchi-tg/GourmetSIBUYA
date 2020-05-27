@@ -76,11 +76,13 @@
 					</p>
 					<div class="container h-100">
 						<div class="d-flex justify-content-center h-100">
+							<form action="SearchServlet" method="GET">
 							<div class="searchbar">
-								<input class="search_input" type="text" name=""
-									placeholder="Search..."> <a href="#"
+								<input class="search_input" type="text" name="search_text"
+									placeholder="Search..."> <a href="SearchServlet"
 									class="search_icon"><i class="fas fa-search"></i></a>
 							</div>
+							</form>
 						</div>
 					</div>
 				</div>
