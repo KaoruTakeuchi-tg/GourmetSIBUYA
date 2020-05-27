@@ -78,11 +78,12 @@ public class RestaurantDao {
 			con = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS);
 			System.out.println("Secceful");
 			Statement st = con.createStatement();
-			String sql = "select photo,name from main.restaurans_categories order by evaluation DESC LIMIT 6";
+			String sql = "select restaurant_id,photo,name from main.restaurans_categories order by evaluation DESC LIMIT 6";
 			ResultSet rs = st.executeQuery(sql);
 			System.out.print("concted!");
-			RestaurantBean rb = new RestaurantBean();
 			while(rs.next()) {
+				RestaurantBean rb = new RestaurantBean();
+				rb.setRestaurant_id(rs.getInt("restaurant_id"));
 				rb.setName(rs.getString("name"));
 				rb.setPhoto(rs.getString("photo"));
 				rbl.addResutaurantList(rb);

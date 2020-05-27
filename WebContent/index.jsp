@@ -76,10 +76,10 @@
 					</p>
 					<div class="container h-100">
 						<div class="d-flex justify-content-center h-100">
-							<form action="SearchServlet" method="GET">
+							<form name="serchFrom" action="SearchServlet" method="GET">
 							<div class="searchbar">
 								<input class="search_input" type="text" name="search_text"
-									placeholder="Search..."> <a href="SearchServlet"
+									placeholder="Search..."> <a href="javascript:serchFrom.submit()"
 									class="search_icon"><i class="fas fa-search"></i></a>
 							</div>
 							</form>
@@ -150,15 +150,14 @@
 			RestaurantList rl = (RestaurantList)request.getAttribute("RestaurantInfo");
 			//List<RestaurantBean> reList = (List<RestaurantBean>)request.getAttribute("RestaurantInfo");
 			//RestaurantBean rb = new RestaurantBean();
-			for(RestaurantBean ri: rl.getResutaurantList()){
-				%>
+			for(RestaurantBean ri: rl.getResutaurantList()){%>
 			<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg"><img
-						class="img-fluid" src="<%=ri.getPhoto() %>" alt="" />
-						<div class="portfolio-box-caption">
-						<div class="project-name"><%=ri.getName() %></div>
-						</div></a>
-				</div>
+				<a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg"><img
+					class="img-fluid" src="<%=ri.getPhoto() %>" alt="" />
+				<div class="portfolio-box-caption">
+				<div class="project-name"><%=ri.getName() %></div>
+				</div></a>
+			</div>
 			<%} %>
 				<!-- <div class="col-lg-4 col-sm-6">
 					<a class="portfolio-box" href="assets/img/portfolio/fullsize/2.jpg"><img
