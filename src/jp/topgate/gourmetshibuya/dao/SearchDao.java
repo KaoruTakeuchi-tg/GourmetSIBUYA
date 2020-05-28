@@ -30,10 +30,11 @@ public class SearchDao {
 				ResultSet rs = pStmt2.executeQuery();
 				while(rs.next()) {
 					RestaurantBean rb = new RestaurantBean();
+					GenresDao gd = new GenresDao();
 					rb.setBusiness_hours(rs.getString("business_hours"));
 					rb.setContent(rs.getString("content"));
 					rb.setEvaluation(rs.getInt("evaluation"));
-					rb.setGenres(rs.getString("genres"));
+					rb.setGenres(gd.getName(rs.getInt("genres")));
 					rb.setName(rs.getString("name"));
 					rb.setPhonenum(rs.getString("phonenum"));
 					rb.setPhoto(rs.getString("photo"));
