@@ -209,23 +209,23 @@
         </div>
       </div>
 
-      <%ReviewList reviewList = (ReviewList)request.getAttribute("review"); %>
+      <%ReviewList reviewList = (ReviewList)request.getAttribute("review");%>
       <div class="container">
         <div class="row">
-        <%for(ReviewBean revireBean : reviewList.getReviewList()){ %>
+        <%for(ReviewBean revireBean : reviewList.getReviewList()){%>
           <div class="col-md-4"><!-- ここから -->
             <blockquote class="testimonial">
-              <p>&ldquo; <%=revireBean.getContent() %>&rdquo;</p>
+              <p>&ldquo; <%=revireBean.getContent()%>&rdquo;</p>
               <div class="d-flex author">
                 <img src="img/person_1.jpg" alt="" class="mr-4">
                 <div class="author-info">
-                  <h4><%=revireBean.getUserName() %></h4>
-                  <p><%=revireBean.getCreate_at() %></p>
+                  <h4><%=revireBean.getUserName()%></h4>
+                  <p><%=revireBean.getCreate_at()%></p>
                 </div>
               </div>
             </blockquote>
           </div>
-          <%} %>
+          <%}%>
          <!--  <div class="col-md-4">
             <blockquote class="testimonial">
               <p>&ldquo; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, obcaecati? Quis eum minus, sequi atque quisquam ducimus aliquam veritatis nobis cum iusto neque enim explicabo maxime natus doloribus, fuga sunt. &rdquo;</p>
