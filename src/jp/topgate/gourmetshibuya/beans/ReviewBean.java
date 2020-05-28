@@ -12,7 +12,14 @@ public class ReviewBean {
 	private Date update_at;
 	private int evaluation;
 	private int nice_cnt;
+	private String userName;
 
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public int getReview_id() {
 		return review_id;
 	}

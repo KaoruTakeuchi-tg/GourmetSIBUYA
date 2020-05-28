@@ -2,29 +2,23 @@ package jp.topgate.gourmetshibuya.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beanList.ReviewList;
-import jp.topgate.gourmetshibuya.beans.RestaurantBean;
-import jp.topgate.gourmetshibuya.dao.RestaurantDao;
-import jp.topgate.gourmetshibuya.dao.ReviewDao;
-
 /**
- * Servlet implementation class RestaurantServlet
+ * Servlet implementation class ReviewServlet
  */
-@WebServlet("/RestaurantServlet")
-public class RestaurantServlet extends HttpServlet {
+@WebServlet("/ReviewServlet")
+public class ReviewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RestaurantServlet() {
+    public ReviewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,18 +28,7 @@ public class RestaurantServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		String id = request.getParameter("restaurant_id");
-		RestaurantBean rb = new RestaurantBean();
-		RestaurantDao rdao = new RestaurantDao();
-		ReviewDao reviewdao = new ReviewDao();
-		ReviewList rl = new ReviewList();
-		rl = reviewdao.getReview(id);
-		rb = rdao.getRestaurantDetailInfo(id);
-		request.setAttribute("rb", rb);
-		request.setAttribute("review", rl);
-		RequestDispatcher rd = request.getRequestDispatcher("/Restaurant.jsp");
-		rd.forward(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -53,6 +36,7 @@ public class RestaurantServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
 	}
+
 }

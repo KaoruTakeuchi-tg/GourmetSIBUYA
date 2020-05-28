@@ -33,6 +33,7 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/styles.css" rel="stylesheet" />
 <link href="css/search.css" rel="stylesheet" />
+<link href="css/index.css" rel="stylesheet" />
 </head>
 <body id="page-top">
 	<!-- Navigation-->
@@ -148,62 +149,22 @@
 			<div class="row no-gutters">
 			<%//RestaurantList rl = new RestaurantList();
 			RestaurantList rl = (RestaurantList)request.getAttribute("RestaurantInfo");
+			int i = 0;
 			//List<RestaurantBean> reList = (List<RestaurantBean>)request.getAttribute("RestaurantInfo");
 			//RestaurantBean rb = new RestaurantBean();
 			for(RestaurantBean ri: rl.getResutaurantList()){%>
-			<div class="col-lg-4 col-sm-6">
-				<a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg"><img
-					class="img-fluid" src="<%=ri.getPhoto() %>" alt="" />
-				<div class="portfolio-box-caption">
-				<div class="project-name"><%=ri.getName() %></div>
-				</div></a>
-			</div>
+				<div class="col-lg-4 col-sm-6">
+				<form name="Restaurant<%=i %>" action="RestaurantServlet" method="GET">
+				<input type="Hidden" name="restaurant_id" value=<%=ri.getRestaurant_id()%>>
+					<a class="portfolio-box" href="javascript:Restaurant<%=i %>.submit()"><img
+						class="img-fluid" src="<%=ri.getPhoto() %>" alt="" />
+					<div class="portfolio-box-caption">
+					<div class="project-name"><%=ri.getName() %></div>
+					</div></a>
+					</form>
+				</div>
+			<%i++; %>
 			<%} %>
-				<!-- <div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" href="assets/img/portfolio/fullsize/2.jpg"><img
-						class="img-fluid" src="assets/img/portfolio/thumbnails/2.jpg"
-						alt="" />
-						<div class="portfolio-box-caption">
-							<div class="project-category text-white-50">Category</div>
-							<div class="project-name">Project Name</div>
-						</div></a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" href="assets/img/portfolio/fullsize/3.jpg"><img
-						class="img-fluid" src="assets/img/portfolio/thumbnails/3.jpg"
-						alt="" />
-						<div class="portfolio-box-caption">
-							<div class="project-category text-white-50">Category</div>
-							<div class="project-name">Project Name</div>
-						</div></a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" href="assets/img/portfolio/fullsize/4.jpg"><img
-						class="img-fluid" src="assets/img/portfolio/thumbnails/4.jpg"
-						alt="" />
-						<div class="portfolio-box-caption">
-							<div class="project-category text-white-50">Category</div>
-							<div class="project-name">Project Name</div>
-						</div></a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" href="assets/img/portfolio/fullsize/5.jpg"><img
-						class="img-fluid" src="assets/img/portfolio/thumbnails/5.jpg"
-						alt="" />
-						<div class="portfolio-box-caption">
-							<div class="project-category text-white-50">Category</div>
-							<div class="project-name">Project Name</div>
-						</div></a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a class="portfolio-box" href="assets/img/portfolio/fullsize/6.jpg"><img
-						class="img-fluid" src="assets/img/portfolio/thumbnails/6.jpg"
-						alt="" />
-						<div class="portfolio-box-caption p-3">
-							<div class="project-category text-white-50">Category</div>
-							<div class="project-name">Project Name</div>
-						</div></a>
-				</div> -->
 			</div>
 		</div>
 	</section>

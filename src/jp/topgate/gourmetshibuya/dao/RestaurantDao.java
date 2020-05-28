@@ -2,6 +2,7 @@ package jp.topgate.gourmetshibuya.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,15 +16,17 @@ public class RestaurantDao {
 	private final String DB_USER = "root";
 	private final String DB_PASS = "kaoru2106";
 
-	public RestaurantBean getRestaurantDetailInfo() {
+	public RestaurantBean getRestaurantDetailInfo(String restaurant_id) {
 		RestaurantBean rb = new RestaurantBean();
 		Connection con = null;
+		int id = Integer.parseInt(restaurant_id);
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS);
-			Statement st = con.createStatement();
-			String sql = "SELECT * FROM main.restaurans_categories";
-			ResultSet rs = st.executeQuery(sql);
+			String sql = "SELECT * FROM main.restaurans_categories where restaurant_id = ?";
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1,id);
+			ResultSet rs = st.executeQuery();
 			System.out.print("concted!");
 			while(rs.next()) {
 				rb.setBusiness_hours(rs.getString("business_hours"));

@@ -1,3 +1,5 @@
+<%@page import="jp.topgate.gourmetshibuya.beans.ReviewBean"%>
+<%@page import="beanList.ReviewList"%>
 <%@page import="jp.topgate.gourmetshibuya.beans.RestaurantBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -73,24 +75,25 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-center">
-            <span class="flaticon-cheers display-4 text-black d-block mb-4"></span>
-            <h4 class="mb-4 text-primary">Drinks</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae hic maiores. Velit nisi, reprehenderit, nobis officia.</p>
+            <span class="display-4 text-black d-block mb-4"></span>
+            <h4 class="mb-4 text-primary">住所</h4>
+            <p><%=rb.getPlace() %></p>
           </div>
           <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-center">
-            <span class="flaticon-fish display-4 text-black d-block mb-4"></span>
-            <h4 class="mb-4 text-primary">Sea Foods</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae hic maiores. Velit nisi, reprehenderit, nobis officia.</p>
+            <span class=" display-4 text-black d-block mb-4"></span>
+            <h4 class="mb-4 text-primary">電話番号</h4>
+            <p><%=rb.getPhonenum() %></p>
           </div>
           <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-center">
-            <span class="flaticon-coffee-cup display-4 text-black d-block mb-4"></span>
-            <h4 class="mb-4 text-primary">Cup Coffees</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae hic maiores. Velit nisi, reprehenderit, nobis officia.</p>
+            <span class=" display-4 text-black d-block mb-4"></span>
+            <h4 class="mb-4 text-primary">営業時間</h4>
+            <p><%=rb.getBusiness_hours() %></p>
+            <p>定休日(<%=rb.getRegular_holiday() %>)<p>
           </div>
           <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-center">
-            <span class="flaticon-salad display-4 text-black d-block mb-4"></span>
-            <h4 class="mb-4 text-primary">Fresh Salad</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae hic maiores. Velit nisi, reprehenderit, nobis officia.</p>
+            <span class=" display-4 text-black d-block mb-4"></span>
+            <h4 class="mb-4 text-primary">評価</h4>
+            <h3><%=rb.getEvaluation() %></h3>
           </div>
         </div>
       </div>
@@ -199,28 +202,31 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12 text-center heading-wrap">
-              <h2>Testimonial</h2>
-              <span class="back-text">Testimonial</span>
+              <h2>クチコミ</h2>
+              <span class="back-text">クチコミ</span>
             </div>
           </div>
         </div>
       </div>
 
+      <%ReviewList reviewList = (ReviewList)request.getAttribute("review"); %>
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
+        <%for(ReviewBean revireBean : reviewList.getReviewList()){ %>
+          <div class="col-md-4"><!-- ここから -->
             <blockquote class="testimonial">
-              <p>&ldquo; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, obcaecati? Quis eum minus, sequi atque quisquam ducimus aliquam veritatis nobis cum iusto neque enim explicabo maxime natus doloribus, fuga sunt. &rdquo;</p>
+              <p>&ldquo; <%=revireBean.getContent() %>&rdquo;</p>
               <div class="d-flex author">
                 <img src="img/person_1.jpg" alt="" class="mr-4">
                 <div class="author-info">
-                  <h4>Mellisa Howard</h4>
-                  <p>CEO, XYZ Company</p>
+                  <h4><%=revireBean.getUserName() %></h4>
+                  <p><%=revireBean.getCreate_at() %></p>
                 </div>
               </div>
             </blockquote>
           </div>
-          <div class="col-md-4">
+          <%} %>
+         <!--  <div class="col-md-4">
             <blockquote class="testimonial">
               <p>&ldquo; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, obcaecati? Quis eum minus, sequi atque quisquam ducimus aliquam veritatis nobis cum iusto neque enim explicabo maxime natus doloribus, fuga sunt. &rdquo;</p>
               <div class="d-flex author">
@@ -243,61 +249,11 @@
                 </div>
               </div>
             </blockquote>
-          </div>
+          </div>-->
         </div>
       </div>
     </section> <!-- .section -->
 
-    <section class="section element-animate">
-      <div class="clearfix mb-5 pb-5">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12 text-center heading-wrap">
-              <h2>Blog</h2>
-              <span class="back-text">Our Blog</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="blog d-block d-lg-flex">
-              <div class="bg-image" style="background-image: url('assets/img/dishes_1.jpg');"></div>
-              <div class="text">
-                <h3>How to cook beef steak with sauce</h3>
-                <p class="sched-time">
-                  <span><span class="fa fa-calendar"></span> April 22, 2018</span> <br>
-                </p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
-
-                <p><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
-
-              </div>
-
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="blog d-block d-lg-flex">
-              <div class="bg-image" style="background-image: url('assets/img/dishes_2.jpg');"></div>
-              <div class="text">
-                <h3>How to cook beef steak with sauce</h3>
-                <p class="sched-time">
-                  <span><span class="fa fa-calendar"></span> April 22, 2018</span> <br>
-                </p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
-
-                <p><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </section> <!-- .section -->
     <footer class="bg-light py-5">
 		<div class="container">
 			<div class="small text-center text-muted">
