@@ -267,6 +267,26 @@ rb = (RestaurantBean) request.getAttribute("rb");
 			</div>
 		</div>
 
+<<<<<<< HEAD
+      <%ReviewList reviewList = (ReviewList)request.getAttribute("review");%>
+      <div class="container">
+        <div class="row">
+        <%for(ReviewBean revireBean : reviewList.getReviewList()){%>
+          <div class="col-md-4"><!-- ここから -->
+            <blockquote class="testimonial">
+              <p>&ldquo; <%=revireBean.getContent()%>&rdquo;</p>
+              <div class="d-flex author">
+                <img src="img/person_1.jpg" alt="" class="mr-4">
+                <div class="author-info">
+                  <h4><%=revireBean.getUserName()%></h4>
+                  <p><%=revireBean.getCreate_at()%></p>
+                </div>
+              </div>
+            </blockquote>
+          </div>
+          <%}%>
+         <!--  <div class="col-md-4">
+=======
 		<%
 			ReviewList reviewList = (ReviewList) request.getAttribute("review");
 		%>
@@ -294,6 +314,7 @@ rb = (RestaurantBean) request.getAttribute("rb");
 					}
 				%>
 				<!--  <div class="col-md-4">
+>>>>>>> a7671dc8b65b6be53a4662a6c1d93ee79ff52ba6
             <blockquote class="testimonial">
               <p>&ldquo; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, obcaecati? Quis eum minus, sequi atque quisquam ducimus aliquam veritatis nobis cum iusto neque enim explicabo maxime natus doloribus, fuga sunt. &rdquo;</p>
               <div class="d-flex author">

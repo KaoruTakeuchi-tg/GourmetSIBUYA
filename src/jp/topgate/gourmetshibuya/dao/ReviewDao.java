@@ -24,6 +24,8 @@ public class ReviewDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS);
 			String sql = "SELECT * FROM main.reviews_categories Inner JOIN main.users_categories ON main.reviews_categories.user_id = users_categories.user_id where restauran_id = ? ORDER BY create_at DESC Limit 3";
+
+
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setInt(1,id);
 			ResultSet rs = st.executeQuery();

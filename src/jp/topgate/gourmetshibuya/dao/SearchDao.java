@@ -18,7 +18,6 @@ public class SearchDao {
 		String user = "root";
 		String password = "kaoru2106";
 		String input = text;
-		int count;
 		RestaurantList searchResult = new RestaurantList();
 		try {
 			Connection con = DriverManager.getConnection(url, user, password);
