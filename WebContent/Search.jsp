@@ -25,13 +25,15 @@
 	</hgroup>
 
 	<%RestaurantList rl = (RestaurantList)request.getAttribute("searchResult");
+	int i = 0;
 
 	for(RestaurantBean ri: rl.getResutaurantList()){
 		%>
     <section class="col-xs-12 col-sm-6 col-md-12">
+    <form action="" method="GET" >
 		<article class="search-result row">
 			<div class="col-xs-12 col-sm-12 col-md-3">
-				<a href="#" title="Lorem ipsum" class="thumbnail"><img src="<%=ri.getPhoto()%>" alt="Lorem ipsum" /></a>            <!-- 画像 -->
+				<a href="javascript:Restaurant<%=i %>.submit()" title="Lorem ipsum" class="thumbnail"><img src="<%=ri.getPhoto()%>" alt="Lorem ipsum" /></a>            <!-- 画像 -->
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">
 				<h3><a href="#" title=""><%=ri.getName() %></a></h3>
@@ -49,8 +51,10 @@
 
 			<span class="clearfix borda"></span>
 		</article>
+		</form>
 	</section>
-	<%} %>
+	<% i++;
+	} %>
 </div>
 
 

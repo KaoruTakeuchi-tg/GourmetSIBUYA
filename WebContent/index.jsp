@@ -152,7 +152,7 @@
 			int i = 0;
 			//List<RestaurantBean> reList = (List<RestaurantBean>)request.getAttribute("RestaurantInfo");
 			//RestaurantBean rb = new RestaurantBean();
-			for(RestaurantBean ri: rl.getResutaurantList()){%>
+			for(RestaurantBean ri: rl.getResutaurantList()){ %>
 				<div class="col-lg-4 col-sm-6">
 				<form name="Restaurant<%=i %>" action="RestaurantServlet" method="GET">
 				<input type="Hidden" name="restaurant_id" value=<%=ri.getRestaurant_id()%>>
