@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beanList.ReviewList;
 import jp.topgate.gourmetshibuya.beans.RestaurantBean;
@@ -35,7 +36,14 @@ public class RestaurantServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		String id = request.getParameter("restaurant_id");
+		HttpSession session = request.getSession();
+		String id = null;
+		if(request.getParameter("restaurant_id") == null) {
+			id = session.getAttribute("restaurantID").toString();
+		}else {
+			id = request.getParameter("restaurant_id");
+			session.setAttribute("restaurantID", id);
+		}
 		RestaurantBean rb = new RestaurantBean();
 		RestaurantDao rdao = new RestaurantDao();
 		ReviewDao reviewdao = new ReviewDao();

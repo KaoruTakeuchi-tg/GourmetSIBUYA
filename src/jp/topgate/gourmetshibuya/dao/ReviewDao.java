@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import beanList.ReviewList;
+import jp.topgate.gourmetshibuya.beans.InsertReview;
 import jp.topgate.gourmetshibuya.beans.ReviewBean;
 
 public class ReviewDao {
@@ -36,6 +37,8 @@ public class ReviewDao {
 				rb.setTitle(rs.getString("title"));
 				rb.setUserName(rs.getString("name"));
 				rl.addReviewList(rb);
+
+
 			}
 		}catch (ClassNotFoundException e) {
 			// TODO: handle exception
@@ -44,5 +47,27 @@ public class ReviewDao {
 			e.printStackTrace();
 		}
 		return rl;
+	}
+
+	public void insertReview(InsertReview ir) {
+		Connection con = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS);
+			String sql = "INSERT INTO `main`.`reviews_categories` (`user_id`, `title`, `content`, `create_at`, `evaluation`, `restauran_id`) VALUES (?, ?, ?, ?, ?, ?)";
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, ir.getUser().getUserID());
+			st.setString(2,ir.getTitle());
+			st.setString(3,  ir.getContent());
+			st.setString(4, ir.getSdf());
+			st.setString(5, ir.getEvaluation());
+			st.setString(6, ir.getRestauranID());
+			System.out.println(st.executeUpdate());
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 }

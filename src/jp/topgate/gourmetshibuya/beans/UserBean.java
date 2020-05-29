@@ -2,6 +2,15 @@ package jp.topgate.gourmetshibuya.beans;
 
 public class UserBean {
 
+	private int userID;
+	public int getUserID() {
+		return userID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
 	private String id;
 	private String password;
 	private String name;
