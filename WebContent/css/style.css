@@ -1352,3 +1352,6 @@ header .navbar .cta-btn a:hover {
     stroke-dashoffset: -136px;
   }
 }
+.center-button{
+	flat:left;
+}

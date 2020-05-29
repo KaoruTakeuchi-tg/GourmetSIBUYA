@@ -33,6 +33,7 @@ public class LoginDao {
 				while(rs.next()) {
 					String password = rs.getString("pass_word");
 					user = new UserBean(emailAddress, password, null, null);
+					user.setUserID(rs.getInt("user_id"));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

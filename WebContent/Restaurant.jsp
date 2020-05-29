@@ -32,7 +32,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
 		id="mainNav">
 		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top">GourmentSIBUYA</a>
+			<a class="navbar-brand js-scroll-trigger" href="IndexServlet">GourmentSIBUYA</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -252,6 +252,9 @@
           </div>-->
         </div>
       </div>
+      <form action="Review.jsp" method="GET" >
+     	 <input type="submit" class="btn btn-outline-primary" value="クチコミ投稿">
+      </form>
     </section> <!-- .section -->
 
     <footer class="bg-light py-5">

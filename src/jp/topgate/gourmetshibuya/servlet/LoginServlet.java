@@ -45,7 +45,8 @@ public class LoginServlet extends HttpServlet {
 
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", id);
-			nextUrl = "/index.jsp";
+			session.setAttribute("User", userbeen);
+			nextUrl = "IndexServlet";
 		}else {
 			nextUrl = "/Login.jsp";
 		}
