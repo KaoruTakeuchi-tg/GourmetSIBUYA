@@ -31,7 +31,7 @@ public class courseDao {
 			while(rs.next()) {
 				CourseBean cb = new CourseBean();
 				cb.setCourse_id(rs.getInt("course_id"));
-				cb.setCourse_name(rs.getString("course_id"));
+				cb.setCourse_name(rs.getString("course_name"));
 				cb.setCourse_time(rs.getDouble("course_itime"));
 				cb.setExplanation(rs.getString("explanation"));
 				cb.setHowmeny(rs.getString("howmany"));
