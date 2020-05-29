@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="jp.topgate.gourmetshibuya.beans.UserBean"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,13 @@
 <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="fonts/flaticons/font/flaticon.css">
 
-<title>Insert title here</title>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<link href="css/re.css" rel="stylesheet">
+
+
+<title>予約一覧</title>
 </head>
 <body>
 
@@ -38,20 +45,47 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto my-2 my-lg-0">
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#about">About</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href=RestaurantServlet>Services</a></li>
+					<%
+						HttpSession session2 = request.getSession();
+					UserBean user = (UserBean) session.getAttribute("User");
+					if (user == null) {
+					%>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="CreateAccount">新規会員登録</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="Login">ログイン</a></li>
+					<%
+						} else {
+					%>
+					<a href="ReservationsServlet">予約一覧</a>
+					<%
+						}
+					%>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
-
+<div class="custable">
+	 <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">予約日付</th>
+      <th scope="col">店名</th>
+      <th scope="col">場所</th>
+      <th scope="col">電話番号</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
@@ -61,6 +95,10 @@
 
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/magnific-popup-options.js"></script>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </body>
 </html>

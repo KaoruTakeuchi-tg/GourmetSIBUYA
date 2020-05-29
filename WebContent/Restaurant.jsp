@@ -5,6 +5,7 @@
 <%@page import="jp.topgate.gourmetshibuya.beans.RestaurantBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@page import="jp.topgate.gourmetshibuya.beans.UserBean"%>
 <!doctype html>
 <html lang="ja">
 <head>
@@ -48,14 +49,16 @@ rb = (RestaurantBean) request.getAttribute("rb");
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto my-2 my-lg-0">
+					<%HttpSession session2 = request.getSession();
+					UserBean user = (UserBean)session.getAttribute("User");
+					if(user == null){%>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#about">About</a></li>
+						href="CreateAccount">新規会員登録</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#services">Services</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#accountregister">新規会員登録</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#accountregister">ログイン</a></li>
+						href="Login">ログイン</a></li>
+					<%}else{ %>
+						<a href="ReservationsServlet">予約一覧</a>
+					<%} %>
 				</ul>
 			</div>
 		</div>
@@ -105,10 +108,11 @@ rb = (RestaurantBean) request.getAttribute("rb");
 						定休日(<%=rb.getRegular_holiday()%>)
 					<p>
 				</div>
+				<%double evalution = (double)request.getAttribute("evalution"); %>
 				<div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-center">
 					<span class=" display-4 text-black d-block mb-4"></span>
 					<h4 class="mb-4 text-primary">評価</h4>
-					<h3><%=rb.getEvaluation()%></h3>
+					<h3><%=String.format("%.1f", evalution)%></h3>
 				</div>
 			</div>
 		</div>

@@ -1,3 +1,4 @@
+<%@page import="jp.topgate.gourmetshibuya.beans.UserBean"%>
 <%@page import="jp.topgate.gourmetshibuya.beans.RestaurantBean"%>
 <%@page import="java.util.List"%>
 <%@page import="beanList.RestaurantList"%>
@@ -49,14 +50,16 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto my-2 my-lg-0">
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#about">About</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href=RestaurantServlet>Services</a></li>
+					<%HttpSession session2 = request.getSession();
+					UserBean user = (UserBean)session.getAttribute("User");
+					if(user == null){%>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="CreateAccount">新規会員登録</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="Login">ログイン</a></li>
+					<%}else{ %>
+						<a href="ReservationsServlet">予約一覧</a>
+					<%} %>
 				</ul>
 			</div>
 		</div>

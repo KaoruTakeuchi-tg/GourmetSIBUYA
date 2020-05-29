@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import beanList.CourseList;
 import beanList.ReviewList;
 import jp.topgate.gourmetshibuya.beans.RestaurantBean;
+import jp.topgate.gourmetshibuya.dao.EvaluationDao;
 import jp.topgate.gourmetshibuya.dao.RestaurantDao;
 import jp.topgate.gourmetshibuya.dao.ReviewDao;
 import jp.topgate.gourmetshibuya.dao.courseDao;
@@ -50,11 +51,17 @@ public class RestaurantServlet extends HttpServlet {
 		RestaurantDao rdao = new RestaurantDao();
 		ReviewDao reviewdao = new ReviewDao();
 		ReviewList rl = new ReviewList();
-		rl = reviewdao.getReview(id);
-		rb = rdao.getRestaurantDetailInfo(id);
 		courseDao cd = new courseDao();
 		CourseList cl = new CourseList();
-		cl = cd.getCourse(id);
+		EvaluationDao ed = new EvaluationDao();
+
+		rl = reviewdao.getReview(id);//レビュー取得
+		rb = rdao.getRestaurantDetailInfo(id);//レストラン詳細情報
+		cl = cd.getCourse(id);//コース情報
+		double evalution = ed.getEvaluation(id);//レビューから評価を取得
+
+		session.setAttribute("restaurantBean", rb);
+		request.setAttribute("evalution", evalution);
 		request.setAttribute("course", cl);
 		request.setAttribute("rb", rb);
 		request.setAttribute("review", rl);
