@@ -267,26 +267,8 @@ rb = (RestaurantBean) request.getAttribute("rb");
 			</div>
 		</div>
 
-<<<<<<< HEAD
-      <%ReviewList reviewList = (ReviewList)request.getAttribute("review");%>
-      <div class="container">
-        <div class="row">
-        <%for(ReviewBean revireBean : reviewList.getReviewList()){%>
-          <div class="col-md-4"><!-- ここから -->
-            <blockquote class="testimonial">
-              <p>&ldquo; <%=revireBean.getContent()%>&rdquo;</p>
-              <div class="d-flex author">
-                <img src="img/person_1.jpg" alt="" class="mr-4">
-                <div class="author-info">
-                  <h4><%=revireBean.getUserName()%></h4>
-                  <p><%=revireBean.getCreate_at()%></p>
-                </div>
-              </div>
-            </blockquote>
-          </div>
-          <%}%>
-         <!--  <div class="col-md-4">
-=======
+
+
 		<%
 			ReviewList reviewList = (ReviewList) request.getAttribute("review");
 		%>
