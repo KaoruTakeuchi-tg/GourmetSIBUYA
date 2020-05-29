@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="jp.topgate.gourmetshibuya.beans.CourseBean"%>
+<%@page import="java.util.List"%>
+<%@page import="beanList.RestaurantList"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Iterator" %>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -57,20 +62,38 @@
 
 	<!-- END header -->
 
-    <section class="section bg-light element-animate">
-	<h1>テスト</h1>
-      <div class="clearfix mb-5 pb-5">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12 text-center heading-wrap">
-              <h2>Menu</h2>
-              <span class="back-text-dark">Menu</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    	<div class="area">
+	<form action="ReviewServlet" method="GET">
+		<div class="form-group">
+			<label for="name">代表者名</label> <input type="text"
+				class="form-control" id="name" name="name">
+		</div>
+		<div class="form-group">
+			<label for="howmany">人数</label> <input type="text"
+				class="form-control" id="howmany" name="howmany">
+		</div>
 
-     </section>
+		<div class="form-group">
+			<label for="exampleFormControlSelect1">コース選択</label> <select
+				class="form-control" id="exampleFormControlSelect1" name="course_name">
+				<%CourseList cl = (CourseList);
+
+				for(CourseBean ci: cl.getCourseBeenList()){
+				%>
+				<option><%ci.getCourse_name();%>></option>
+				<%}%>
+
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="time">時間</label> <input type="time"
+				class="form-control" id="time" name="time">
+		</div>
+		<input type="submit" class="btn btn-primary" value="予約">
+	</form>
+
+	</div>
 
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/popper.min.js"></script>

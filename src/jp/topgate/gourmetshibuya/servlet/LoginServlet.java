@@ -37,15 +37,14 @@ public class LoginServlet extends HttpServlet {
 		UserBean user = new UserBean(id, password, null, null);
 		String nextUrl = null;
 		// ログイン処理
-		boolean isLogin = execute(user);
+		UserBean isLogin = execute(user);
 
 		// ログイン成功時の処理
-		if (isLogin) {
-			UserBean userbeen = new UserBean(id, password, null, null);
+		if (isLogin != null) {
 
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", id);
-			session.setAttribute("User", userbeen);
+			session.setAttribute("User", isLogin);
 			nextUrl = "IndexServlet";
 		}else {
 			nextUrl = "/Login.jsp";
@@ -56,14 +55,14 @@ public class LoginServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	boolean execute(UserBean user) {
+	UserBean execute(UserBean user) {
 			var loginDao = new LoginDao();
 			UserBean user2 = loginDao.findUser(user.getId());
 
 			if (user2 != null && user2.getPassword().equals(user.getPassword())) {
-				return true;
+				return user2;
 			}
-			return false;
+			return null;
 		}
 
 
